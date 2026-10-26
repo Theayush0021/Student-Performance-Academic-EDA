@@ -1,14 +1,14 @@
 
-# ==========================================================
+
 # PROJECT: STUDENT PERFORMANCE & ACADEMIC EDA
 # LANGUAGE: R
 # TOOLS: dplyr, ggplot2, tidyr
-# ==========================================================
 
 
-# =========================
+
+
 # 1. INSTALL PACKAGES
-# =========================
+
 
 packages <- c("dplyr", "ggplot2", "tidyr")
 
@@ -23,9 +23,9 @@ library(ggplot2)
 library(tidyr)
 
 
-# =========================
+
 # 2. CREATE DATASET
-# =========================
+
 
 students <- data.frame(
   
@@ -75,9 +75,9 @@ students <- data.frame(
 )
 
 
-# =========================
+
 # 3. VIEW DATASET
-# =========================
+
 
 print(students)
 
@@ -106,9 +106,9 @@ ncol(students)
 names(students)
 
 
-# =========================
+
 # 4. DATA CLEANING CHECK
-# =========================
+
 
 # Missing values in each column
 colSums(is.na(students))
@@ -124,9 +124,9 @@ students <- students %>%
   distinct()
 
 
-# =========================
+
 # 5. CREATE NEW COLUMNS
-# =========================
+
 
 students <- students %>%
   mutate(
@@ -158,9 +158,9 @@ students <- students %>%
 print(students)
 
 
-# =========================
+
 # 6. BASIC STATISTICS
-# =========================
+
 
 # Average marks
 mean(students$Average_Marks)
@@ -178,9 +178,9 @@ median(students$Average_Marks)
 sd(students$Average_Marks)
 
 
-# =========================
+
 # 7. TOP AND LOWEST STUDENTS
-# =========================
+
 
 # Top 5 students
 top_students <- students %>%
@@ -210,9 +210,9 @@ students$Name[
 ]
 
 
-# =========================
+
 # 8. GENDER ANALYSIS
-# =========================
+
 
 # Gender frequency
 gender_count <- table(students$Gender)
@@ -239,9 +239,9 @@ gender_average <- aggregate(
 print(gender_average)
 
 
-# =========================
+
 # 9. PERFORMANCE ANALYSIS
-# =========================
+
 
 # Performance frequency
 performance_count <- table(
@@ -260,9 +260,9 @@ performance_percentage <- round(
 print(performance_percentage)
 
 
-# =========================
+
 # 10. SUBJECT ANALYSIS
-# =========================
+
 
 # Average Math marks
 mean(students$Math)
@@ -289,9 +289,9 @@ subject_average <- data.frame(
 print(subject_average)
 
 
-# =========================
+
 # 11. CORRELATION ANALYSIS
-# =========================
+
 
 # Study hours vs average marks
 study_correlation <- cor(
@@ -326,9 +326,9 @@ correlation_matrix <- students %>%
 print(correlation_matrix)
 
 
-# =========================
+
 # 12. OUTLIER ANALYSIS
-# =========================
+
 
 # Boxplot
 boxplot(
@@ -368,9 +368,9 @@ outliers <- students %>%
 print(outliers)
 
 
-# =========================
+
 # 13. DATA VISUALIZATION
-# =========================
+
 
 # Create plots folder
 if (!dir.exists("plots")) {
@@ -378,9 +378,9 @@ if (!dir.exists("plots")) {
 }
 
 
-# -------------------------
+
 # A. HISTOGRAM
-# -------------------------
+
 
 p1 <- ggplot(
   students,
@@ -404,9 +404,9 @@ p1 <- ggplot(
 print(p1)
 
 
-# -------------------------
+
 # B. GENDER BAR CHART
-# -------------------------
+
 
 p2 <- ggplot(
   students,
@@ -428,9 +428,9 @@ p2 <- ggplot(
 print(p2)
 
 
-# -------------------------
+
 # C. STUDY HOURS VS MARKS
-# -------------------------
+
 
 p3 <- ggplot(
   students,
@@ -460,9 +460,9 @@ p3 <- ggplot(
 print(p3)
 
 
-# -------------------------
+
 # D. ATTENDANCE VS MARKS
-# -------------------------
+
 
 p4 <- ggplot(
   students,
@@ -492,9 +492,9 @@ p4 <- ggplot(
 print(p4)
 
 
-# -------------------------
+
 # E. SUBJECT-WISE BOXPLOT
-# -------------------------
+
 
 students_long <- students %>%
   
@@ -542,9 +542,9 @@ p5 <- ggplot(
 print(p5)
 
 
-# -------------------------
+
 # F. SUBJECT-WISE AVERAGE
-# -------------------------
+
 
 p6 <- ggplot(
   subject_average,
@@ -569,9 +569,9 @@ p6 <- ggplot(
 print(p6)
 
 
-# -------------------------
+
 # G. PERFORMANCE CATEGORY
-# -------------------------
+
 
 p7 <- ggplot(
   students,
@@ -595,9 +595,7 @@ p7 <- ggplot(
 print(p7)
 
 
-# =========================
 # 14. SAVE GRAPHS
-# =========================
 
 ggsave(
   "plots/average_marks_histogram.png",
@@ -655,9 +653,7 @@ ggsave(
 )
 
 
-# =========================
 # 15. FINAL PROJECT SUMMARY
-# =========================
 
 cat("\n")
 cat("====================================\n")
@@ -712,7 +708,5 @@ cat(
   "\n"
 )
 
-cat("====================================\n")
 cat(" PROJECT COMPLETED SUCCESSFULLY!\n")
-cat("====================================\n")
 
